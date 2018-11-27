@@ -4,16 +4,22 @@
     box-sizing: border-box;
 }
 
-
-body {
-    background: url("./mutirao2.png") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+.site {
+    background-image:url("../assets/mutirao2.png");
     background-size: cover;
+    background-attachment: fixed;
+    height: auto;
 }
 
-.background {}
+.body {
+    background-color: rgba(255, 255, 255, 0.85);
+    max-width: 860px;
+    margin: 0 auto;
+    border-radius: 7px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
 
 .body {
     background-color: rgba(255, 255, 255, 0.85);
@@ -32,6 +38,7 @@ body {
 .banner img {
     width: 100%;
     max-width: 600px;
+    padding-top: 20px;
 }
 
 .titulo-pagina {

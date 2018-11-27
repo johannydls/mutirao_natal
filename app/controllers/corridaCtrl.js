@@ -3,83 +3,37 @@ module.exports = (app) => {
     let controller = {};
     let Corrida = app.models.corrida;
 
-    controller.listaCorridas = (req, res) => {
-        let promise = Corrida.find().exec()
+    //store
+    controller.listaCorridas = async (req, res) => {
+        const corridas = await Corrida.find();
+        console.log(`[${new Date().toLocaleString()}] Listagem de PGs: GET /api/pgs\n`);
+        return res.json(corridas);
+    }
 
-            .then((corridas) => {
-                console.log('[===SERVIDOR===] GET /api/corridas');
-                res.json(corridas);
-            },
-        
-            (erro) => {
-                console.log(`[===SERVIDOR===] ERROR: GET /api/corridas \n${erro}`);
-                res.status(500).json(erro);
-            }
-        );
-    };
+    controller.obtemCorrida = async (req, res) => {
+        const corrida = await Corrida.findById(req.params.id);
+        console.log(`[${new Date().toLocaleString()}] Detalhes do PG: GET /api/pgs/${req.params.id}\n`);
+        return res.json(corrida);
+    }
 
-    controller.obtemCorrida = (req, res) => {
-        let _id = req.params.id;
+    controller.removeCorrida = async (req, res) => {
+        await Corrida.findByIdAndRemove(req.params.id);
+        console.log(`[${new Date().toLocaleString()}] Remoção de PG: DELETE /api/pgs/${req.params.id}\n`);
+        return res.send("Corrida removida");
+    }
 
-        Corrida.findById(_id).exec()
+    controller.editaCorrida = async (req, res) => {
+        const corrida = await Corrida.findByIdAndUpdate(req.params.id, req.body, {new:true});
+        console.log(`[${new Date().toLocaleString()}] Atualização de PG: PUT /api/pgs/${req.params.id}\n`);
+        return res.json(corrida);
+    }
 
-            .then((corrida) => {
-                if (!corrida) throw new Error("Corrida não encontrada");
-                res.json(corrida);
-            },
-            
-            (erro) => {
-                console.log(`[===SERVIDOR===] ERROR: GET /api/corridas/${_id}\n${erro}`);
-                res.status(404).json(erro);
-            }
-        );
-    };
-
-    controller.removeCorrida = (req, res) => {
-        let _id = req.params.id;
-
-        Corrida.remove({"_id": _id}).exec()
-
-            .then(()=> {
-                console.log(`[===SERVIDOR===] DELETE /api/corridas/${_id}`);
-                res.end();
-            },
-            
-            (erro) => {
-                console.log(`[===SERVIDOR===] ERROR: DELETE /api/corridas/${_id}`);
-                return console.error(erro);
-            }
-        );
-    };
-
-    controller.salvaCorrida = (req, res) => {
-        let _id = req.body._id;
-
-        if (_id) {
-            Corrida.findByIdAndUpdate(_id, req.body).exec()
-
-                .then((corrida) => {
-                    console.log(`[===SERVIDOR===] PUT /api/corridas/${_id}`);
-                    res.json(corrida);
-                },
-                (erro) => {
-                    console.log(`[===SERVIDOR===] ERROR: PUT /api/corridas/${_id}\n${erro}`);
-                }
-            );
-        } else {
-            Corrida.create(req.body)
-
-                .then((corrida) => {
-                    console.log(`[===SERVIDOR===] POST /api/corridas 201 OK`);
-                    res.status(201).json(corrida);
-                },
-                (erro) => {
-                    console.log(`[===SERVIDOR===] ERROR: POST /api/corridas 500\n${erro}`);
-                    res.status(500).json(erro);
-                }
-            );
-        }
+    controller.criaCorrida = async (req, res) => {
+        const corrida = await Corrida.create(req.body);
+        console.log(`[${new Date().toLocaleString()}] Adição de Produto: POST /api/products\n`);
+        return res.json(corrida);
     }
 
     return controller;
+    
 };

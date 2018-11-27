@@ -3,83 +3,43 @@ module.exports = (app) => {
     let controller = {};
     let PG = app.models.pg;
 
-    controller.listaPGs = (req, res) => {
-        let promise = PG.find().exec()
+    //store
+    controller.listaPGs = async (req, res) => {
+        const pgs = await PG.find();
+        console.log(`[${new Date().toLocaleString()}] Listagem de PGs: GET /api/pgs\n`);
+        return res.json(pgs);
+    }
 
-            .then((PGs) => {
-                console.log('[===SERVIDOR===] GET /api/pgs');
-                res.json(PGs);
-            },
-        
-            (erro) => {
-                console.log(`[===SERVIDOR===] ERROR: GET /api/pgs \n${erro}`);
-                res.status(500).json(erro);
-            }
-        );
-    };
+    controller.obtemPG = async (req, res) => {
+        const pg = await PG.findById(req.params.id);
+        console.log(`[${new Date().toLocaleString()}] Detalhes do PG: GET /api/pgs/${req.params.id}\n`);
+        return res.json(pg);
+    }
 
-    controller.obtemPG = (req, res) => {
-        let _id = req.params.id;
+    controller.removePG = async (req, res) => {
+        await PG.findByIdAndRemove(req.params.id);
+        console.log(`[${new Date().toLocaleString()}] Remoção de PG: DELETE /api/pgs/${req.params.id}\n`);
+        return res.send("Entrada removida");
+    }
 
-        PG.findById(_id).exec()
+    controller.editaPG = async (req, res) => {
+        const pg = await PG.findByIdAndUpdate(req.params.id, req.body, {new:true});
+        console.log(`[${new Date().toLocaleString()}] Atualização de PG: PUT /api/pgs/${req.params.id}\n`);
+        return res.json(pg);
+    }
 
-            .then((PG) => {
-                if (!PG) throw new Error("PG não encontrada");
-                res.json(PG);
-            },
-            
-            (erro) => {
-                console.log(`[===SERVIDOR===] ERROR: GET /api/pgs/${_id}\n${erro}`);
-                res.status(404).json(erro);
-            }
-        );
-    };
+    controller.criaPG = async (req, res) => {
+        const pg = await PG.create(req.body);
+        console.log(`[${new Date().toLocaleString()}] Adição de Produto: POST /api/pgs\n`);
+        return res.json(pg);
+    }
 
-    controller.removePG = (req, res) => {
-        let _id = req.params.id;
-
-        PG.remove({"_id": _id}).exec()
-
-            .then(()=> {
-                console.log(`[===SERVIDOR===] DELETE /api/pgs/${_id}`);
-                res.end();
-            },
-            
-            (erro) => {
-                console.log(`[===SERVIDOR===] ERROR: DELETE /api/pgs/${_id}`);
-                return console.error(erro);
-            }
-        );
-    };
-
-    controller.salvaPG = (req, res) => {
-        let _id = req.body._id;
-
-        if (_id) {
-            PG.findByIdAndUpdate(_id, req.body).exec()
-
-                .then((PG) => {
-                    console.log(`[===SERVIDOR===] PUT /api/pgs/${_id}`);
-                    res.json(PG);
-                },
-                (erro) => {
-                    console.log(`[===SERVIDOR===] ERROR: PUT /api/pgs/${_id}\n${erro}`);
-                }
-            );
-        } else {
-            PG.create(req.body)
-
-                .then((PG) => {
-                    console.log(`[===SERVIDOR===] POST /api/pgs 201 OK`);
-                    res.status(201).json(PG);
-                },
-                (erro) => {
-                    console.log(`[===SERVIDOR===] ERROR: POST /api/pgs 500\n${erro}`);
-                    res.status(500).json(erro);
-                }
-            );
-        }
+    controller.listaPGsPorCorrida = async (req, res) => {
+        const pgs = await PG.find({ corrida: req.params.id });
+        console.log(`[${new Date().toLocaleString()}] Listagem de PGs: GET /api/corridas/pgs/${req.params.id}\n`);
+        return res.json(pgs);
     }
 
     return controller;
+    
 };

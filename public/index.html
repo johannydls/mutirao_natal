@@ -14,7 +14,7 @@
     
 </head>
 
-<body class="background">
+<body ng-cloak class="site">
     <br><br>
 
     <div class="body container-fluid">
@@ -46,6 +46,7 @@
     <!-- Dependências do Angular -->
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./node_modules/angular/angular.min.js"></script>
+    <script src="./node_modules/angular-resource/angular-resource.min.js"></script>
     <script src="./node_modules/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="./node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="./node_modules/angular-aria/angular-aria.min.js"></script>
@@ -64,9 +65,12 @@
     <script src="./js/app.js"></script>
 
     <!-- Services -->
+    <script src="./js/services/CorridasService.js"></script>
 
     <!-- Controllers -->
-    <script src="./js/controllers/homeCtrl.js"></script>
+    <script src="./js/controllers/HomeCtrl.js"></script>
+    <script src="./js/controllers/NovaCorridaCtrl.js"></script>
+    <script src="./js/controllers/CorridasCtrl.js"></script>
 
 </body>
 

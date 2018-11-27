@@ -4,9 +4,10 @@ module.exports = (app) => {
 
     app.route('/api/corridas')
         .get(ctrl.listaCorridas)
-        .post(ctrl.salvaCorrida);
+        .post(ctrl.criaCorrida);
 
     app.route('/api/corridas/:id')
         .get(ctrl.obtemCorrida)
-        .delete(ctrl.removeCorrida);
+        .delete(ctrl.removeCorrida)
+        .put(ctrl.editaCorrida);
 }

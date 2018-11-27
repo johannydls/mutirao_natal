@@ -4,9 +4,13 @@ module.exports = (app) => {
 
     app.route('/api/pgs')
         .get(ctrl.listaPGs)
-        .post(ctrl.salvaPG);
+        .post(ctrl.criaPG);
 
     app.route('/api/pgs/:id')
         .get(ctrl.obtemPG)
-        .delete(ctrl.removePG);
+        .delete(ctrl.removePG)
+        .put(ctrl.editaPG);
+
+    app.route('/api/corridas/pgs/:id')
+        .get(ctrl.listaPGsPorCorrida)
 }

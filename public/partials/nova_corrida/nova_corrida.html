@@ -1,7 +1,7 @@
 <h1 class="text-center titulo-pagina">Nova Corrida do Mutirão de Natal</h1>
 <br><br>
 <section class="container" >
-    <form style="margin: 0 auto; width: 50%">
+    <form ng-submit="novaCorrida()" style="margin: 0 auto; width: 50%">
         <md-input-container class="md-block">
             <label>Ano</label>
             <input ng-model="corrida.ano" type="text">
@@ -12,6 +12,7 @@
             <input ng-model="corrida.alvo_geral" type="number">
         </md-input-container>
 
+        <md-button class="md-raised md-primary" type="submit">Cadastrar</md-button>
     </form>
 
 

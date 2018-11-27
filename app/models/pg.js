@@ -10,6 +10,10 @@ module.exports = () => {
             type: String,
             required: true
         },
+        lider: {
+            type: String,
+            required: true
+        },
         alimento: {
             type: String,
             required: false
@@ -26,6 +30,8 @@ module.exports = () => {
             type: Schema.Types.ObjectId,
             ref: 'Corrida'
         }
+    }, {
+        timestamps: true
     });
 
     return mongoose.model('PG', pgSchema);

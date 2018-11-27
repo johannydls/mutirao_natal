@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
 module.exports = () => {
 
@@ -14,8 +13,11 @@ module.exports = () => {
         },
         coletado: {
             type: Number,
-            required: false
+            required: false,
+            default: 0
         }
+    }, {
+        timestamps: true
     });
 
     return mongoose.model('Corrida', corridaSchema);
