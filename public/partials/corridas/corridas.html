@@ -31,7 +31,7 @@
             <td>{{corrida.coletado }} Kg</td>
             <td class="text-center">
                 <a ng-href="#!/corridas/{{corrida._id}}">
-                    <md-button class="md-raised">Detalhes</md-button>
+                    <md-button ng-click="selecionaCorrida(corrida)" class="md-raised">Detalhes</md-button>
                 </a>
             </td>
         </tr>

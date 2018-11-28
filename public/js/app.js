@@ -4,7 +4,8 @@ let app = angular.module('mutirao-natal', [
     'ngSanitize',
     'ngRoute',
     'routeStyles',
-    'ngResource'
+    'ngResource',
+    'ngStorage'
 ]);
 
 app.constant('env', {
@@ -29,6 +30,11 @@ app.config(($routeProvider) => {
         .when('/corridas', {
             templateUrl: 'partials/corridas/corridas.html',
             controller: 'CorridasCtrl',
+            css: 'partials/corridas/corridas.css'
+        })
+        .when('/corridas/:id', {
+            templateUrl: 'partials/corridas/detalhe_corridas.html',
+            controller: 'CorridaPGsCtrl',
             css: 'partials/corridas/corridas.css'
         })
         .otherwise({
