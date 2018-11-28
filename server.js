@@ -1,5 +1,5 @@
 let http = require('http');
-let app = require('./config/express')();
+let app = require('./express')();
 
 require('./config/database.js')('mongodb://localhost:27017/corrida_mutirao_db');
 

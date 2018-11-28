@@ -10,6 +10,8 @@
     
     <link rel="stylesheet" href="./node_modules/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/@mdi/font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="./node_modules/angular-material-data-table/dist/md-data-table.min.css">
     <link rel="stylesheet" href="./assets/style.css">
     
 </head>
@@ -33,17 +35,13 @@
                 <a ng-href="#!/corridas">
                     <md-button class="md-raised">Ver corridas</md-button>
                 </a>
-                <a ng-href="#!/atualizar">
-                    <md-button class="md-raised">Atualizar doações</md-button>
-                </a>
             </section>
         </header>
-
-        <div ng-view></div>
     </div>
+    <div class="body container-fluid" ng-view></div>
     <br><br>
 
-    <!-- Dependências do Angular -->
+    <!-- Módulos NodeJS -->
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./node_modules/angular/angular.min.js"></script>
     <script src="./node_modules/angular-resource/angular-resource.min.js"></script>
@@ -55,6 +53,7 @@
     <script src="./node_modules/angular-locale-pt-br/angular-locale_pt-br.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./node_modules/ngstorage/ngStorage.min.js"></script>
+    <script src="./node_modules/angular-material-data-table/dist/md-data-table.min.js"></script>
 
     <!-- Outras dependências -->
     <script src="./vendor/angular-route-styles/route-styles.js"></script>

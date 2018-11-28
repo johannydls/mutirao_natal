@@ -1,19 +1,19 @@
 <h1 class="text-center titulo-pagina">Nova Corrida do Mutirão de Natal</h1>
 <br><br>
-<section class="container" >
+<section class="container">
     <form ng-submit="novaCorrida()" style="margin: 0 auto; width: 50%">
         <md-input-container class="md-block">
             <label>Ano</label>
-            <input ng-model="corrida.ano" type="text">
+            <input ng-model="corrida.ano" type="number" min="2017" max="2030">
         </md-input-container>
 
         <md-input-container md-no-float class="md-block">
             <label>Alvo geral de coleta</label>
-            <input ng-model="corrida.alvo_geral" type="number">
+            <input ng-model="corrida.alvo_geral" type="number" min="0">
         </md-input-container>
 
-        <md-button class="md-raised md-primary" type="submit">Cadastrar</md-button>
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-button class="md-raised md-primary" type="submit">Cadastrar</md-button>
+        </section>
     </form>
-
-
 </section>

@@ -5,7 +5,8 @@ let app = angular.module('mutirao-natal', [
     'ngRoute',
     'routeStyles',
     'ngResource',
-    'ngStorage'
+    'ngStorage',
+    'md.data.table'
 ]);
 
 app.constant('env', {
@@ -44,6 +45,6 @@ app.config(($routeProvider) => {
 
 app.config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-      .primaryPalette('green')
+      .primaryPalette('blue-grey')
       .accentPalette('blue');
 });

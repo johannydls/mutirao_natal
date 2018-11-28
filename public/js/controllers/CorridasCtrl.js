@@ -1,6 +1,6 @@
 angular.module('mutirao-natal')
 
-.controller('CorridasCtrl', function($scope, CorridasService, $localStorage) {
+.controller('CorridasCtrl', function($scope, $rootScope, CorridasService, $localStorage) {
     
     $scope.corridas = [];
 
@@ -16,6 +16,7 @@ angular.module('mutirao-natal')
 
     $scope.selecionaCorrida = (corrida) => {
         $localStorage.corridaSelecionada = corrida;
+        $rootScope.corridaSelecionada = corrida;
     }
 
     buscaCorridas();

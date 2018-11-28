@@ -24,11 +24,13 @@ module.exports = () => {
         },
         coletado: {
             type: Number,
-            required: false
+            required: false,
+            default: 0
         },
         corrida: {
             type: Schema.Types.ObjectId,
-            ref: 'Corrida'
+            ref: 'Corrida',
+            required: true
         }
     }, {
         timestamps: true

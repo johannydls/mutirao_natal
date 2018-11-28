@@ -1,0 +1,74 @@
+<md-dialog aria-label="Adicionar novo Pequeno Grupo">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Adicionar novo Pequeno Grupo</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon aria-label="Close dialog">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fit=""
+                        preserveAspectRatio="xMidYMid meet" focusable="false">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                    </svg>
+                </md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <form ng-submit="adicionaPG()">
+        <md-dialog-content style="width:500px;max-width:800px;max-height:810px; padding: 30px;">
+            <section>
+                <md-input-container class="md-block">
+                    <label>Nome do pequeno grupo</label>
+                    <input ng-model="pg.nome" type="text" required>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Nome do líder</label>
+                    <input ng-model="pg.lider" type="text" required>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Alimento escolhido</label>
+                    <input ng-model="pg.alimento" type="text">
+                </md-input-container>
+
+                <md-input-container md-no-float class="md-block">
+                    <label>Alvo de coleta</label>
+                    <input ng-model="pg.alvo" type="number" min="0">
+                </md-input-container>
+
+            </section>
+        </md-dialog-content>
+        
+        <md-dialog-actions layout="row" layout-sm="column" layout-align="center center" layout-wrap style="padding-bottom:20px;">
+            <md-button class="md-raised md-warn" ng-click="cancel()" style="margin-right:20px;">
+                Cancelar
+            </md-button>
+
+            <md-button class="md-raised md-primary" ng-click="cancel()" type="submit">Cadastrar</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
+
+<!--
+    <h1 class="text-center titulo-pagina">Nova PG do Mutirão de Natal</h1>
+<br><br>
+<section class="container">
+    <form ng-submit="novaCorrida()" style="margin: 0 auto; width: 50%">
+        <md-input-container class="md-block">
+            <label>Ano</label>
+            <input ng-model="pg.ano" type="number" min="2017" max="2030">
+        </md-input-container>
+
+        <md-input-container md-no-float class="md-block">
+            <label>Alvo geral de coleta</label>
+            <input ng-model="corrida.alvo_geral" type="number" min="0">
+        </md-input-container>
+
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-button class="md-raised md-primary" type="submit">Cadastrar</md-button>
+        </section>
+
+    </form>
+</section>
+
+-->

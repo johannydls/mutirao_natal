@@ -5,6 +5,7 @@ angular.module('mutirao-natal')
     $scope.corrida = new CorridasService();
 
     $scope.novaCorrida = () => {
+
         $scope.corrida.$save()
         .then(() => {
             $scope.mensagem = { texto: 'Salvo com sucesso!'}

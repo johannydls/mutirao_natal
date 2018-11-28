@@ -1,6 +1,46 @@
+<div style="padding-top: 20px">
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
 
-<ul>
-    <li ng-repeat="pg in pgsCorrida" style="padding:10px; margin-left: 5px;">
-        {{pg}}
-    </li>
-</ul>
+        <md-button class="md-raised md-primary" ng-click="showDialogAddPG($event)">Adicionar PG</md-button>
+
+        <a ng-href="#!/atualizar">
+            <md-button class="md-raised md-primary">Atualizar doações</md-button>
+        </a>
+        <a ng-href="#!/classificacao/">
+            <md-button class="md-raised md-primary">Ver classificação</md-button>
+        </a>
+    </section>
+</div>
+<div>
+    <h2 class="text-center titulo-pagina">Mutirão de Natal {{corridaSelecionada.ano}}</h2>
+</div>
+<br>
+<md-table-container>
+    <table md-table md-progress="promise" class="table-hover">
+        <thead md-head md-head md-order="query.order" md-on-reorder="getDesserts">
+            <tr md-row>
+                <th md-column md-order-by="nome" style="font-size:20px">Nome do PG</th>
+                <th md-column md-order-by="lider" style="font-size:20px">Líder do PG</th>
+                <th md-column md-order-by="alvo" style="font-size:20px">Alimento</th>
+                <th md-column md-order-by="coletado" style="font-size:20px">Coletado</th>
+                <th md-column></th>
+            </tr>
+        </thead>
+        <tbody md-body>
+            <tr md-row ng-repeat="pg in pgsCorrida | orderBy: query.order" >
+                <td md-cell style="font-size:18px">{{pg.nome}}</td>
+                <td md-cell style="font-size:18px">{{pg.lider}}</td>
+                <td md-cell style="font-size:18px"><span>{{pg.alvo}} KGs -</span> {{pg.alimento}}</td>
+                <td md-cell style="font-size:18px">{{pg.coletado}} KGs</td>
+                <td md-cell>
+                    <md-button class="md-fab md-mini md-primary">
+                        <span class="mdi mdi-pencil"></span>
+                    </md-button>
+                    <md-button class="md-fab md-mini md-warn">
+                        <span class="mdi mdi-delete-forever mdi-24px"></span>
+                    </md-button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</md-table-container>
