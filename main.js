@@ -1,13 +1,14 @@
-
 const http = require('http');
 const electron = require('electron');
+
+//Arquivo de configuração express deve estar na raíz do projeto
 const express = require('./express')();
 
 require('./config/database.js')('mongodb://localhost:27017/corrida_mutirao_db');
     
 http.createServer(express).listen(express.get('port'), () => {
-        console.log(`[===SERVIDOR===] RODANDO: http://localhost:${express.get('port')}`);
-    });
+    console.log(`[===SERVIDOR===] RODANDO: http://localhost:${express.get('port')}`);
+});
 
 //Módulo utilizado para controlar o ciclo de vida da aplicação
 const app = electron.app;
@@ -22,7 +23,11 @@ let mainWindow;
 app.on('ready', async () => {
 
     //Uma das opções que é possível definir ao criar uma janela, é o seu tamanho
-    mainWindow = new BrowserWindow({ width: 800, height: 600 });
+    mainWindow = new BrowserWindow({ 
+        width: 800, 
+        height: 600,
+        icon: __dirname + '/public/assets/img/favicon.png'
+    });
 
     //Depois apontamos a janela para o HTML que criamos anteriormente
     //mainWindow.loadURL('file://' + __dirname + '/public/index.html');

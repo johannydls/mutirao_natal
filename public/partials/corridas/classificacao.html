@@ -1,0 +1,30 @@
+<!--<div isteven-omni-bar current-value="userLoggedPosts" max-value="userLoggedIn.projects_settings.unlimited_posts ? 0 : userLoggedIn.user_properties.posts_limit"
+    current-style="loadingCurrent2" container-style="loadingBarStyle1">
+    <span ng-show="userLoggedIn.projects_settings.pause_collect==false">Posts collected: {{userLoggedPosts | number}}</span>
+    <span ng-show="userLoggedIn.projects_settings.unlimited_posts==false  && userLoggedIn.projects_settings.pause_collect==false">of
+        {{userLoggedIn.user_properties.posts_limit | number}}</span>
+    <span ng-show="userLoggedIn.projects_settings.pause_collect==false && userLoggedIn.projects_settings.unlimited_posts==false">({{(userLoggedPosts*100)/userLoggedIn.user_properties.posts_limit
+        | number:1}}%)</span>
+    <span ng-show="userLoggedIn.projects_settings.pause_collect==true">COLLECT PAUSED</span>
+</div>-->
+<div>
+    <h1 class="text-center titulo-pagina">Mutirão de Natal {{corridaSelecionada.ano}}</h1>
+</div>
+<br>
+<div class="table-responsive">
+    <div ng-repeat="pg in pgsCorrida | orderBy: '-coletado'">
+        <div style="height: 60px; margin-bottom:30px" isteven-omni-bar current-value="pg.coletado" max-value="pg.alvo"
+            current-style="{backgroundColor:pg.cor}" container-style="loadingBarStyle1">
+            <span style="font-size: 36px">{{pg.nome}}: {{pg.coletado}} Kgs de {{pg.alvo}} Kgs <span ng-if="pg.alimento">({{pg.alimento}})</span></span>
+        </div>
+    </div>
+</div>
+<hr>
+<br>
+<div style="height: 60px" isteven-omni-bar current-value="corridaSelecionada.coletado" max-value="corridaSelecionada.alvo_geral"
+    current-style="loadingCurrent1" container-style="loadingBarStyle1">
+    <span style="font-size: 36px">Alvo geral: {{corridaSelecionada.coletado}} Kgs de {{corridaSelecionada.alvo_geral}}
+        Kgs</span>
+</div>
+
+<br>

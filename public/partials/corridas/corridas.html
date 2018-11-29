@@ -1,8 +1,7 @@
-
 <h1 class="text-center titulo-pagina">Corridas do Mutirão de Natal</h1>
 <br>
 <div class="alert alert-info" ng-show="corridas.length" role="alert">
-    Corridas cadastradss: {{corridas.length }}
+    Corridas cadastradas: {{corridas.length }}
 </div>
 
 <div class="alert alert-info" ng-hide="corridas.length" role="alert">
@@ -14,26 +13,35 @@
     <input ng-model="filtro" type="text">
 </md-input-container>
 
-<div class="table-responsive">
-    <table class="table table-hover">
-        <tr>
-            <th>ANO</th>
-            <th>ALVO</th>
-            <th>COLETADO</th>
-            <th class="text-center">Ação</th>
-        </tr>
+<md-table-container style="margin-bottom:20px">
+    <table md-table md-progress="promise" class="table-hover">
+        <thead md-head md-head md-order="query.order">
+            <tr md-row>
+                <th md-column md-order-by="ano" style="font-size:22px">Ano</th>
+                <th md-column md-order-by="alvo" style="font-size:22px">Alvo</th>
+                <th md-column md-order-by="coletado" style="font-size:22px">Coletado</th>
+                <th md-column></th>
+            </tr>
+        </thead>
+        <tbody md-body>
 
-        <tr ng-repeat="corrida in corridas | filter: filtro">
-            <td>
-                {{ corrida.ano }}
-            </td>
-            <td>{{ corrida.alvo_geral }} Kg</td>
-            <td>{{corrida.coletado }} Kg</td>
-            <td class="text-center">
-                <a ng-href="#!/corridas/{{corrida._id}}">
-                    <md-button ng-click="selecionaCorrida(corrida)" class="md-raised">Detalhes</md-button>
-                </a>
-            </td>
-        </tr>
+            <tr md-row ng-repeat="corrida in corridas | filter:filtro | orderBy: query.order">
+                <td md-cell style="font-size:20px">{{corrida.ano}}</td>
+                <td md-cell style="font-size:20px">{{corrida.alvo_geral}} Kgs</td>
+                <td md-cell style="font-size:20px"><span>{{corrida.coletado}} KGs</td>
+                <td md-cell>
+                    <a ng-href="#!/corridas/{{corrida._id}}" style="text-decoration:none">
+                        <md-button class="md-fab md-mini md-warn">
+                            <md-tooltip md-direction="bottom">Ver mais informações</md-tooltip>
+                            <span class="mdi mdi-eye mdi-24px"></span>
+                        </md-button>
+                    </a>
+                    <md-button class="md-fab md-mini md-warn" ng-click="showConfirmRemove($event, corrida)">
+                        <span class="mdi mdi-delete-forever mdi-24px"></span>
+                    </md-button>
+                </td>
+            </tr>
+
+        </tbody>
     </table>
-</div>
+</md-table-container>

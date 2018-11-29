@@ -31,6 +31,10 @@ module.exports = () => {
             type: Schema.Types.ObjectId,
             ref: 'Corrida',
             required: true
+        },
+        cor: {
+            type: String,
+            required: false
         }
     }, {
         timestamps: true

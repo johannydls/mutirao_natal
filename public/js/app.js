@@ -6,7 +6,9 @@ let app = angular.module('mutirao-natal', [
     'routeStyles',
     'ngResource',
     'ngStorage',
-    'md.data.table'
+    'md.data.table',
+    'isteven-omni-bar',
+    'ngSanitize'
 ]);
 
 app.constant('env', {
@@ -38,6 +40,11 @@ app.config(($routeProvider) => {
             controller: 'CorridaPGsCtrl',
             css: 'partials/corridas/corridas.css'
         })
+        .when('/classificacao/:id', {
+            templateUrl: 'partials/corridas/classificacao.html',
+            controller: 'ClassificacaoPGsCtrl',
+            css: 'partials/corridas/corridas.css'
+        })
         .otherwise({
             redirectTo: '/home'
         });
@@ -48,3 +55,8 @@ app.config(function($mdThemingProvider) {
       .primaryPalette('blue-grey')
       .accentPalette('blue');
 });
+
+app.config(function($mdAriaProvider) {
+    // Globally disables all ARIA warnings.
+    $mdAriaProvider.disableWarnings();
+ });
