@@ -31,6 +31,7 @@ angular.module('mutirao-natal')
 
                 corrida.$update(() => {
                     console.log("Coleta atualizada")
+                    $localStorage.corridaSelecionada = corrida;
                 })
             });
         },

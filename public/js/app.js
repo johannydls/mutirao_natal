@@ -8,13 +8,13 @@ let app = angular.module('mutirao-natal', [
     'ngStorage',
     'md.data.table',
     'isteven-omni-bar',
-    'ngSanitize'
+    'ngSanitize',
+    'xeditable'
 ]);
 
 app.constant('env', {
     BASE_API_LOCAL: 'http://localhost:8008'
     //BASE_API_REMOTE: 'https://projetop1.herokuapp.com'
-    //BASE_API_REMOTE: 'http://localhost:3000'
 });
 
 app.config(($routeProvider) => {
@@ -45,6 +45,16 @@ app.config(($routeProvider) => {
             controller: 'ClassificacaoPGsCtrl',
             css: 'partials/corridas/corridas.css'
         })
+        .when('/editar/pg/:id', {
+            templateUrl: 'partials/pgs/editar_pg.html',
+            controller: 'EditaPGsCtrl',
+            css: 'partials/pgs/pgs.css'
+        })
+        .when('/doacoes', {
+            templateUrl: 'partials/pgs/doacoes.html',
+            controller: '',
+            css: 'partials/pgs/pgs.css'
+        })
         .otherwise({
             redirectTo: '/home'
         });
@@ -60,3 +70,7 @@ app.config(function($mdAriaProvider) {
     // Globally disables all ARIA warnings.
     $mdAriaProvider.disableWarnings();
  });
+
+ app.run(['editableOptions', function(editableOptions) {
+    editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+  }]);

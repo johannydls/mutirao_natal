@@ -1,7 +1,6 @@
-
 <div>
-        <h1 class="text-center titulo-pagina">Mutirão de Natal {{corridaSelecionada.ano}}</h1>
-    </div>
+    <h1 class="text-center titulo-pagina">Mutirão de Natal {{corridaSelecionada.ano}}</h1>
+</div>
 
 <div style="padding-top: 20px">
     <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
@@ -36,9 +35,12 @@
                 <td md-cell style="font-size:18px"><span>{{pg.alvo}} KGs -</span> {{pg.alimento}}</td>
                 <td md-cell style="font-size:18px">{{pg.coletado}} KGs</td>
                 <td md-cell>
-                    <md-button class="md-fab md-mini md-primary">
-                        <span class="mdi mdi-pencil"></span>
-                    </md-button>
+                    <a href="#!/editar/pg/{{pg._id}}">
+                        <md-button class="md-fab md-mini md-primary">
+                            <span class="mdi mdi-pencil"></span>
+                        </md-button>
+                    </a>
+
                     <md-button class="md-fab md-mini md-warn" ng-click="showConfirmRemove($event, pg)">
                         <span class="mdi mdi-delete-forever mdi-24px"></span>
                     </md-button>
@@ -47,3 +49,5 @@
         </tbody>
     </table>
 </md-table-container>
+
+<a href="" editable-text="user.name">Teste</a>

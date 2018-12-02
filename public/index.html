@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./node_modules/@mdi/font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="./node_modules/angular-material-data-table/dist/md-data-table.min.css">
     <link rel="stylesheet" href="./vendor/angular-omni-bar/isteven-omni-bar.css">
+    <link rel="stylesheet" href="./node_modules/angular-xeditable/dist/css/xeditable.min.css">
     <link rel="stylesheet" href="./assets/style.css">
     
 </head>
@@ -27,15 +28,15 @@
                 <img src="assets/img/banner2.png">
             </div>
 
-            <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <section layout="row" layout-xs="column" layout-align="center center" layout-wrap>
                 <a ng-href="#!/home">
                     <md-button class="md-raised">Início</md-button>
                 </a>
                 <a ng-href="#!/nova">
-                    <md-button class="md-raised">Nova corrida</md-button>
+                    <md-button class="md-raised">Novo Mutirão de Natal</md-button>
                 </a>
                 <a ng-href="#!/corridas">
-                    <md-button class="md-raised">Ver corridas</md-button>
+                    <md-button class="md-raised">Todas as corridas</md-button>
                 </a>
             </section>
         </header>
@@ -56,6 +57,7 @@
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./node_modules/ngstorage/ngStorage.min.js"></script>
     <script src="./node_modules/angular-material-data-table/dist/md-data-table.min.js"></script>
+    <script src="./node_modules/angular-xeditable/dist/js/xeditable.min.js"></script>
 
     <!-- Outras dependências -->
     <script src="./vendor/angular-route-styles/route-styles.js"></script>
@@ -80,6 +82,7 @@
     <script src="./js/controllers/CorridasCtrl.js"></script>
     <script src="./js/controllers/CorridaPGsCtrl.js"></script>
     <script src="./js/controllers/ClassificacaoPGsCtrl.js"></script>
+    <script src="./js/controllers/EditaPGsCtrl.js"></script>
 
 </body>
 
