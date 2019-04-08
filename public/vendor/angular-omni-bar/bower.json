@@ -1,0 +1,14 @@
+{
+    "name"      : "isteven-angular-omni-bar",
+    "version"   : "v1.0.1",
+    "main"      : [
+        "isteven-omni-bar.js",
+        "isteven-omni-bar.css"
+    ],
+    "ignore"    : [
+        ".git",
+        ".gitignore",
+        "bower.json",
+        "README.md"
+    ]
+}

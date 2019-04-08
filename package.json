@@ -1,0 +1,33 @@
+{
+  "name": "mutirao_natal",
+  "version": "1.0.0",
+  "description": "Aplicação para computar coletas do mutirão de natal",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "electron": "./node_modules/.bin/electron main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johannydls/mutirao_natal.git"
+  },
+  "author": "Johanny LS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johannydls/mutirao_natal/issues"
+  },
+  "homepage": "https://github.com/johannydls/mutirao_natal#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-load": "^1.1.16",
+    "method-override": "^3.0.0",
+    "mongodb": "^3.1.10",
+    "mongoose": "^5.3.13"
+  },
+  "devDependencies": {
+    "electron": "^3.0.10",
+    "nodemon": "^1.18.6"
+  }
+}

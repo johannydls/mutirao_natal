@@ -1,0 +1,40 @@
+<h1 class="text-center titulo-pagina">Corridas do Mutirão de Natal</h1>
+<br>
+<md-input-container md-no-float class="md-block">
+    <label>Filtrar</label>
+    <input ng-model="filtro" type="text">
+</md-input-container>
+
+<md-table-container style="margin-bottom:20px">
+    <table md-table md-progress="promise" class="table-hover">
+        <thead md-head md-head md-order="query.order">
+            <tr md-row>
+                <th md-column md-order-by="ano" style="font-size:22px">Ano</th>
+                <th md-column md-order-by="alvo" style="font-size:22px">Alvo</th>
+                <th md-column md-order-by="coletado" style="font-size:22px">Coletado</th>
+                <th md-column></th>
+            </tr>
+        </thead>
+        <tbody md-body>
+
+            <tr md-row ng-repeat="corrida in corridas | filter:filtro | orderBy: query.order">
+                <td md-cell style="font-size:20px">{{corrida.ano}}</td>
+                <td md-cell style="font-size:20px">{{corrida.alvo_geral}} Kgs</td>
+                <td md-cell style="font-size:20px"><span>{{corrida.coletado}} KGs</td>
+                <td md-cell>
+                    <a ng-href="#!/corridas/{{corrida._id}}" style="text-decoration:none">
+                        <md-button class="md-fab md-mini md-warn">
+                            <md-tooltip md-direction="bottom">Ver mais informações</md-tooltip>
+                            <span class="mdi mdi-eye mdi-24px"></span>
+                        </md-button>
+                    </a>
+                    <md-button class="md-fab md-mini md-warn" ng-click="showConfirmRemove($event, corrida)">
+                            <md-tooltip md-direction="bottom">Remover corrida</md-tooltip>
+                        <span class="mdi mdi-delete-forever mdi-24px"></span>
+                    </md-button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</md-table-container>

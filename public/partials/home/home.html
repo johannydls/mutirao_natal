@@ -1,0 +1,36 @@
+<div style="padding: 50px 50px 30px 50px">
+    <h2 class="text-center">
+        Bem vindo ao aplicativo <strong>Corrida do Mutirão de Natal</strong>! Aqui você
+        pode gerenciar as coletas de alimentos dos Pequenos Grupos de sua igreja de forma
+        dinâmica e organizada. E ainda poderá ver uma classificação geral das coletas!
+    </h2>
+</div>
+
+<div ng-controller="CorridasCtrl" flex-xs flex-gt-xs="100" layout="row" layout-wrap layout-align="center center">
+    <md-card class="md-whiteframe-8dp" ng-repeat="corrida in corridas | orderBy:'-ano'" style="max-width:400px">
+        <img src="../../assets/slider/foto5.jpg" class="md-card-image" alt="Mutirão de natal" ng-class="{corridaAntiga:(corrida.ano-anoAtual)<0}">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline"><b>Mutirão de Natal {{corrida.ano}}</b></span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <p style="font-size:20px;" class="text-justify">
+                Veja detalhes da coleta de alimentos do mutirão de natal de {{corrida.ano}}<span ng-if="(corrida.ano-anoAtual)>0"> (ainda não foi iniciado).</span><span ng-if="(corrida.ano-anoAtual) == 0">. Atualmente, foram coletados <strong>{{corrida.coletado}} Kgs</strong>.</span><span ng-if="(corrida.ano-anoAtual) < 0">. Foram coletados <strong>{{corrida.coletado}} Kgs.</strong></span> O alvo para este ano
+                <span ng-if="(corrida.ano-anoAtual) >= 0">é</span><span ng-if="(corrida.ano-anoAtual) < 0">foi</span> de <strong>{{corrida.alvo_geral}} Kgs</strong>.
+                <span ng-if="(corrida.alvo_geral - corrida.coletado) > 0">Restam <strong>{{corrida.alvo_geral-corrida.coletado}}
+                        Kgs</strong>
+                    para o objetivo ser atingido!</span>
+                <span ng-if="(corrida.alvo_geral-corrida.coletado) <= 0">O objetivo foi atingido!</span>
+            </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <a href="#!/corridas/{{corrida._id}}">
+                <md-button ng-click="selecionaCorrida(corrida)" class="md-raised md-primary" aria-label="Favorite">
+                    Mais informações
+                </md-button>
+            </a>
+        </md-card-actions>
+    </md-card>
+</div>
+

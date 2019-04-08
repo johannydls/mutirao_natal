@@ -1,0 +1,50 @@
+<div>
+    <h1 class="text-center titulo-pagina">Editar dados do Pequeno Grupo {{corridaSelecionada.ano}}</h1>
+    <h3 class="text-center titulo-pagina">{{pgSelecionado.nome}}</h3>
+    <p style="font-size:11px; color: rgb(160, 160, 160)" class="text-center"><em>(Atualizado em
+            {{pgSelecionado.updatedAt | date:'dd/MM/yyyy HH:mm'}})</em></p>
+</div>
+<br><br>
+<div style="max-width: 70%; margin: 0 auto;">
+    <form name="frm" novalidate>
+
+        <md-input-container class="md-block" style="margin:10px;">
+            <label>Nome do Líder</label>
+            <input type="text" ng-model="pgSelecionado.lider" required md-no-asterisk name="lider">
+            <div ng-messages="frm.nome.$error">
+                <div ng-message="required">Este campo é necessário.</div>
+            </div>
+        </md-input-container>
+
+        <div layout="row">
+
+            <md-input-container class="md-block" flex="50" style="margin:10px">
+                <label>Alimento escolhido</label>
+                <input type="text" ng-model="pgSelecionado.alimento" md-no-asterisk name="alimento">
+            </md-input-container>
+
+            <md-input-container class="md-block" flex="50" style="margin:10px">
+                <label>Coleta atual (em Kg)</label>
+                <input type="number" min="0" ng-model="pgSelecionado.coletado" md-no-asterisk name="coletado">
+            </md-input-container>
+
+            <md-input-container class="md-block" flex="50" style="margin:10px">
+                <label>Alvo definido (em Kg)</label>
+                <input type="number" min="0" ng-model="pgSelecionado.alvo" md-no-asterisk name="alvo">
+            </md-input-container>
+        </div>
+
+        <section layout="row" layout-xs="column" layout-align="center center" layout-wrap>
+
+            <md-button class="md-raised md-default" ng-click="back()">Cancelar</md-button>
+
+            <md-button class="md-raised md-primary" ng-click="editar()">Salvar</md-button>
+
+        </section>
+
+    </form>
+</div>
+
+{{pgSelecionado}}
+<br>
+{{corridaSelecionada}}
